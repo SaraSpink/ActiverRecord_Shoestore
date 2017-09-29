@@ -24,6 +24,5 @@ post ("/store/:id") do
   @store = Store.find(params[:id].to_i)
   brand = Brand.create({:name => params["name"]})
   @store.brands.push(brand)
-
   redirect("/store/#{@store.id}")
 end
