@@ -28,6 +28,7 @@ describe("adding a brand", {:type => :feature}) do
 
     click_link("Imelda's Extra-Wide")
     fill_in("Add a brand to this store:", :with => "wolky")
+    click_button("Add")
     expect(page).to have_content("wolky")
   end
 end
