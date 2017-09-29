@@ -19,12 +19,16 @@
     </ul>
 
   <form action="/store/<%= @store.id %>" method="post">
-
     <label for="name">Add a brand to this store: </label>
     <input id="name" name="name" type="text">
-
-
     <button type="submit">Add</button>
-
   </form>
+
+  <form action="/store/<%= @store.id %>" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <button type="submit">Remove <%= @store.name %> from database</button>
+  </form>
+
+
+  <a href="/"><button type="button">Return Home</button></a>
 </div>

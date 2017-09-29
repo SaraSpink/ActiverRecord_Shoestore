@@ -33,3 +33,10 @@ patch ("/store/:id") do
   store.update({:name => name})
   redirect("/store/#{store.id}")
 end
+
+delete ("/store/:id") do
+  store = Store.find(params[:id].to_i)
+  name = params['name']
+  store.delete
+  redirect("/")
+end
