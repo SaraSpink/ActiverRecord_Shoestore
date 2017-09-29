@@ -14,6 +14,4 @@ describe(Store) do
     expect(store.name()).to(eq("Imelda's"))
   end
 
-
-
 end
