@@ -1,16 +1,23 @@
-# _:sunflower:  :sunflower:_
+# _:feet: Shoe Store :feet:_
 
-## Volunteer Tracker - Ruby - 9.29.17
+## Shoe Store - Ruby - 9.29.17
 
 ## By Sara Spink
 
-## Description:
-
+## Description/User Stories:
+- A user can add, update, delete and list shoe stores.
+- A user can add and list new shoe brands. Shoe brands should include price.
+- A user can add shoe brandsto a store.
+- A user can associate the same brand of shoes with multiple stores.
+- A user can see all of the brands a store sells on the individual store page.
+- store names and shoe brands are saved with a capital letter no matter how the user enters them.
+- Price displays in currency format (typing in 50 should be updated to $50.00.)
+- A user cannot enter a blank field.
+- All entries for stores and brands are unique.
+- Store and brand names to have a maximum of one hundred characters.
 
 ## Setup/Installation:
 
-
-## Specs
 ```
 $ git clone .......
 ```
