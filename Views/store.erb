@@ -5,7 +5,7 @@
     <ul>
       <% if @store.brands.any? %>
         <% @store.brands.each do |brand| %>
-          <li><%= @store.brands %></li>
+          <li><%= brand.name %></li>
           <% end %>
       <% else %>
         <p>nothing here yet!</p>
