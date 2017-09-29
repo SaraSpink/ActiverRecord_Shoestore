@@ -12,6 +12,12 @@ end
 post ("/") do
   name = params["name"]
   store = Store.create({:name => name})
+  @store_validation = Store.new({:name => name, :done => false})
+  if @task.save()
+  erb(:index)
+  else
+  erb(:errors)
+  end
   redirect("/")
 end
 
