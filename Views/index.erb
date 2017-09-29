@@ -1,0 +1,24 @@
+<h1>Savage Kicks</h1>
+
+<p>Store Directory:</p>
+<ul>
+  <% if @stores.any? %>
+    <% @stores.each do |store| %>
+      <a href="/store/<%= store.id %>"><li><%= store.name %></li></a>
+    <% end %>
+  <% else %>
+    <p>There are currently no stores in the directory.</p>
+  <% end %>
+</ul>
+
+<h1>Add Store:</h1>
+<div class="form-control">
+<form action="/" method="post">
+  <label for="name">store name:</label>
+
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Submit</button>
+
+</form>
+</div>
