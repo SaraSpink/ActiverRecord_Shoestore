@@ -1,0 +1,25 @@
+<div class="container">
+  <h2><%= @store.name %></h2>
+
+  <p><%= @store.name %> currently stocks the following brands:</p>
+    <ul>
+      <% if @store.brands.any? %>
+        <% @store.brands.each do |brand| %>
+          <li><%= @store.brands %></li>
+          <% end %>
+      <% else %>
+        <p>nothing here yet!</p>
+      <% end %>
+    </ul>
+
+  <form action="/store/<%= @store.id %>" method="post">
+
+    <label for="name">Add a brand to this store:</label>
+    <input id="name" name="name" type="text">
+
+
+
+    <button type="submit">Add</button>
+
+  </form>
+</div>

@@ -14,3 +14,16 @@ post ("/") do
   store = Store.create({:name => name})
   redirect("/")
 end
+
+get ("/store/:id") do
+  @store = Store.find(params[:id].to_i)
+  erb(:store)
+end
+
+post ("/store/:id") do
+  @store = Store.find(params[:id].to_i)
+  brand = Brand.create({:name => params["name"]})
+  @store.brands.push(brand)
+binding.pry
+  redirect("/store/#{@store.id}")
+end
