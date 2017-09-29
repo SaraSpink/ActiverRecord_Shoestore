@@ -22,7 +22,7 @@ end
 
 post ("/store/:id") do
   @store = Store.find(params[:id].to_i)
-  brand = Brand.create({:name => params["name"]})
+  brand = Brand.create({:name => params["name"], :price => params["price"]})
   @store.brands.push(brand)
   redirect("/store/#{@store.id}")
 end

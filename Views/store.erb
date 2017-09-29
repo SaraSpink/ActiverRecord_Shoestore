@@ -7,28 +7,39 @@
   <button type="submit">Update</button>
   </form>
 
-  <h5><%= @store.name %> currently stocks the following brands: </h5>
+  <br>
+
+  <h4><%= @store.name %> currently stocks the following brands: </h4>
     <ul>
       <% if @store.brands.any? %>
         <% @store.brands.each do |brand| %>
-          <li><%= brand.name %></li>
+          <li><%= brand.name %>; <%= brand.price %></li>
           <% end %>
       <% else %>
         <p>nothing here yet!</p>
       <% end %>
     </ul>
 
+  <br>
+  <br>
+
   <form action="/store/<%= @store.id %>" method="post">
     <label for="name">Add a brand to this store: </label>
     <input id="name" name="name" type="text">
+    <label for="price">Enter price: </label>
+    <input id="price" name="price" type="text">
     <button type="submit">Add</button>
   </form>
+
+  <br>
+  <br>
+
+  <a href="/"><button type="button">Return Home</button></a>
+  <h5>or</h5>
 
   <form action="/store/<%= @store.id %>" method="post">
     <input name="_method" type="hidden" value="delete">
     <button type="submit">Remove <%= @store.name %> from database</button>
   </form>
 
-
-  <a href="/"><button type="button">Return Home</button></a>
 </div>
