@@ -23,9 +23,12 @@ end
 post ("/store/:id") do
   @store = Store.find(params[:id].to_i)
   brand = Brand.create({:name => params["name"], :price => params["price"]})
-  @store.brands.push(brand)
-  binding.pry
-  redirect("/store/#{@store.id}")
+  if brand.save()
+    @store.brands.push(brand)
+    redirect("/store/#{@store.id}")
+  else
+    erb(:errors)
+  end
 end
 
 patch ("/store/:id") do
