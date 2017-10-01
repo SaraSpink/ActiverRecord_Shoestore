@@ -1,7 +1,10 @@
 class Brand < ActiveRecord::Base
-  has_and_belongs_to_many :stores
-  validates(:name, :presence => true)
+  has_many :brands_stores
+  has_many :stores, through: :brands_stores
+  validates(:name, :presence => true, :uniqueness => true)
   validates(:price, :presence => true)
+
+
   before_save(:capitalize_name)
 
 

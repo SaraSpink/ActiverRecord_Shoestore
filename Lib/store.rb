@@ -1,5 +1,6 @@
 class Store < ActiveRecord::Base
-  has_and_belongs_to_many :brands
+  has_many :brands_stores
+  has_many :brands, through: :brands_stores
   validates(:name, :presence => true)
   before_save(:capitalize_name)
 

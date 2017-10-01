@@ -23,11 +23,13 @@ describe("adding a brand", {:type => :feature}) do
   it ("allows a user to add a brand to a particular store") do
     visit("/")
     fill_in("store name:", :with => "Imelda's Extra Wide")
+
     click_button("Submit")
 
     click_link("Imelda's Extra Wide")
     fill_in("brand_name", :with => "wolky")
+    fill_in("Enter price:", :with => 5)
     click_button("Add")
-    expect(page).to have_content("wolky")
+    expect(page).to have_content("Wolky")
   end
 end

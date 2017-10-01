@@ -12,7 +12,11 @@ end
 post ("/") do
   name = params["name"]
   store = Store.create({:name => name})
+  if store.save()
   redirect("/")
+  else
+  erb(:errors, :locals => {:messages => store.errors.messages})
+  end
 end
 
 get ("/store/:id") do
@@ -22,12 +26,12 @@ end
 
 post ("/store/:id") do
   @store = Store.find(params[:id].to_i)
-  brand = Brand.create({:name => params["name"], :price => params["price"]})
+  brand = Brand.find_or_create_by({:name => params["name"], :price => params["price"]})
   if brand.save()
     @store.brands.push(brand)
     redirect("/store/#{@store.id}")
   else
-    erb(:errors)
+    erb(:errors, :locals => {:messages => brand.errors.messages})
   end
 end
 

@@ -1,1 +1,3 @@
-<p>You  must input a name!</p>
+<% messages.each do |key, value|%>
+<p> <%= "#{key} #{value[0]}" %> </p>
+<% end %>
