@@ -33,21 +33,27 @@ end
 
 get ("/store/:id") do
   @store = Store.find(params[:id].to_i)
+  @brands = Brand.all()
   erb(:store)
 end
 
 post ("/store/:id") do
   @store = Store.find(params[:id].to_i)
-  brand = Brand.find_or_create_by({:name => params["name"], :price => params["price"]})
-  if brand.save()
-    @store.brands.push(brand)
-    redirect("/store/#{@store.id}")
-  else
-    erb(:errors, :locals => {:messages => brand.errors.messages})
-  end
+  @brands = Brand.all()
+
+  # brand = Brand.find_or_create_by({:name => params["name"], :price => params["price"]})
+  # if brand.save()
+  #   @store.brands.push(brand)
+  #   redirect("/store/#{@store.id}")
+  # else
+  #   erb(:errors, :locals => {:messages => brand.errors.messages})
+  # end
+  erb(:store)
 end
 
 patch ("/store/:id") do
+  @brands = Brand.all()
+
   store = Store.find(params[:id].to_i)
   name = params['name']
   store.update({:name => name})
