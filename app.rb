@@ -10,9 +10,9 @@ get ("/") do
   erb(:index)
 end
 
-post ("/") do
+post ("/create_store") do
   name = params["name"]
-  store = Store.create({:name => name})
+  store = Store.new({:name => name})
   if store.save()
   redirect("/")
   else
@@ -20,10 +20,10 @@ post ("/") do
   end
 end
 
-patch ("/") do
+patch ("/create_brand") do
   brand = params["brand_name"]
   price = params["price"]
-  allbrands = Brand.create({:name => brand, :price => price})
+  allbrands = Brand.new({:name => brand, :price => price})
   if allbrands.save()
   redirect("/")
   else
@@ -39,7 +39,8 @@ end
 
 post ("/store/:id") do
   @store = Store.find(params[:id].to_i)
-  @brands = Brand.all()
+  brand = Brand.create()
+  @brands = @store.brands.push(brand)
 
   # brand = Brand.find_or_create_by({:name => params["name"], :price => params["price"]})
   # if brand.save()

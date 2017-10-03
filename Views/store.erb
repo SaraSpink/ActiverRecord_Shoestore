@@ -18,6 +18,17 @@
   </form>
 </div>
 
+<h4> Brands carried by <%= @store.name %>: </h4>
+  <ul>
+    <% if @brands.any? %>
+      <% @brands.each do |brand| %>
+        <li><%= brand.name %>; $<%= "%.2f" %  brand.price %></li>
+        <% end %>
+    <% else %>
+      <p>nothing here yet!</p>
+    <% end %>
+  </ul>
+
 <form action="/store/<%= @store.id %>" method="post">
   <input name="_method" type="hidden" value="patch">
   <label for="brand_id">Select a Brand</label>

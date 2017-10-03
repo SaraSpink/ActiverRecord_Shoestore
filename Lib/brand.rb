@@ -3,7 +3,7 @@ class Brand < ActiveRecord::Base
   has_many :stores, through: :brands_stores
   validates(:name, :presence => true)
   validates(:price, :presence => true)
-  validates(:name, :uniqueness => true)
+  validates(:name, uniqueness: { case_sensitive: false })
 
 
   before_save(:capitalize_name)
