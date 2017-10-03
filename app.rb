@@ -6,6 +6,7 @@ Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 get ("/") do
   @stores = Store.all()
+  @brands = Brand.all()
   erb(:index)
 end
 
@@ -16,6 +17,17 @@ post ("/") do
   redirect("/")
   else
   erb(:errors, :locals => {:messages => store.errors.messages})
+  end
+end
+
+patch ("/") do
+  brand = params["brand_name"]
+  price = params["price"]
+  allbrands = Brand.create({:name => brand, :price => price})
+  if allbrands.save()
+  redirect("/")
+  else
+  erb(:errors, :locals => {:messages => allbrands.errors.messages})
   end
 end
 
