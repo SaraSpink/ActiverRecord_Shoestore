@@ -20,8 +20,8 @@
 
 <h4> Brands carried by <%= @store.name %>: </h4>
   <ul>
-    <% if @brands.any? %>
-      <% @brands.each do |brand| %>
+    <% if @store.brands.any? %>
+      <% @store.brands.each do |brand| %>
         <li><%= brand.name %>; $<%= "%.2f" %  brand.price %></li>
         <% end %>
     <% else %>
@@ -29,7 +29,7 @@
     <% end %>
   </ul>
 
-<form action="/store/<%= @store.id %>" method="post">
+<form action="/store/<%= @store.id%>/add_brand " method="post">
   <input name="_method" type="hidden" value="patch">
   <label for="brand_id">Select a Brand</label>
   <select id='brand_id' name='brand_id' type='text'>

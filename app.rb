@@ -39,8 +39,8 @@ end
 
 post ("/store/:id") do
   @store = Store.find(params[:id].to_i)
-  brand = Brand.create()
-  @brands = @store.brands.push(brand)
+  brand = params["brand_id"]
+
 
   # brand = Brand.find_or_create_by({:name => params["name"], :price => params["price"]})
   # if brand.save()
@@ -50,6 +50,14 @@ post ("/store/:id") do
   #   erb(:errors, :locals => {:messages => brand.errors.messages})
   # end
   erb(:store)
+end
+
+patch ("/store/:id/add_brand") do
+  @store = Store.find(params[:id].to_i)
+  @brands = Brand.all()
+  brand = Brand.find(params['brand_id'])
+  @store.brands.push(brand)
+  redirect back
 end
 
 patch ("/store/:id") do
